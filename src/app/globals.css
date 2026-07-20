@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-void: #0a0e14;
+  --color-void-soft: #0d1219;
+  --color-surface: #10151f;
+  --color-surface-raised: #151b27;
+  --color-surface-border: #212938;
+  --color-ink: #e8edf4;
+  --color-ink-muted: #8a94a6;
+  --color-ink-faint: #828ca3;
+}
+
+:root.light {
+  --color-void: #f6f7fb;
+  --color-void-soft: #eef0f6;
+  --color-surface: #ffffff;
+  --color-surface-raised: #ffffff;
+  --color-surface-border: #e2e5ef;
+  --color-ink: #10151f;
+  --color-ink-muted: #4b5266;
+  --color-ink-faint: #5f6780;
+}
+
+* {
+  border-color: var(--color-surface-border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-void);
+  color: var(--color-ink);
+  font-family: var(--font-inter), sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background-color: #7c6fff;
+  color: #0a0e14;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-border);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4cdfe8;
+}
+
+/* Glassmorphism */
+.glass {
+  background: color-mix(in srgb, var(--color-surface-raised) 60%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-surface-border);
+}
+
+.text-gradient {
+  background: linear-gradient(120deg, #4cdfe8, #7c6fff 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.grid-bg {
+  background-image: var(--tw-gradient-stops), linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 48px 48px, 48px 48px;
+}
+
+/* Custom terminal cursor (desktop only) */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid #4cdfe8;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+  transition: width 0.15s ease, height 0.15s ease, border-radius 0.15s ease, background-color 0.15s ease;
+}
+
+@media (hover: none) {
+  .custom-cursor {
+    display: none;
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus visibility for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #4cdfe8;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
