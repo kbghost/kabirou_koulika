@@ -1,7 +1,9 @@
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/lib/site-config";
 
-export const runtime = "edge";
+// ❌ Remplacé export const runtime = "edge"; par :
+export const dynamic = "force-static";
+
 export const alt = siteConfig.name;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
