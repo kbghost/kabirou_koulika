@@ -1,5 +1,8 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === 'production';
+const repoName = '/portfolio'; // Le nom de ton dépôt GitHub
+
 const nextConfig: NextConfig = {
   output: 'export',
   reactStrictMode: true,
@@ -11,7 +14,8 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "raw.githubusercontent.com" },
     ],
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/kabirou_koulika' : '',
+  basePath: isProd ? repoName : '',
+  assetPrefix: isProd ? `${repoName}/` : '',
 };
 
 export default nextConfig;

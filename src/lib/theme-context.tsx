@@ -28,8 +28,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       setTheme(stored);
       return;
     }
-    const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
-    setTheme(prefersLight ? "light" : "dark");
+    // Par défaut pour tout le monde : Thème SOMBRE ("dark")
+    setTheme("dark");
   }, []);
 
   useEffect(() => {
