@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const isProd = process.env.NODE_ENV === 'production';
-const repoName = '/portfolio'; // Le nom de ton dépôt GitHub
+const repoName = '/kabirou_koulika'; // Corriger ici avec le vrai nom de ton dépôt !
 
 const nextConfig: NextConfig = {
   output: 'export',
